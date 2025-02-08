@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahmoud Mohamed - Full Stack Web Developer</title>
+
+    <!-- إضافة خط جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* إعدادات عامه للصفحة */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            color: #f2f2f2;
+            font-size: 18px;
+            overflow-x: hidden;
+        }
+
+        /* خلفية الفيديو */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* تنسيق الرأس */
+        header {
+            position: relative;
+            text-align: center;
+            color: white;
+            padding: 120px 20px;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 4em;
+            margin: 0;
+            font-weight: 700;
+            animation: fadeIn 2s ease-in-out;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        header p {
+            font-size: 1.8em;
+            font-weight: 300;
+            animation: fadeIn 2s ease-in-out;
+            animation-delay: 0.5s;
+            color: #e0e0e0;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* تأثير الحركة للنصوص */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* قائمة الأقسام */
+        nav {
+            background-color: #00336600;
+            padding: 15px 20px;
+            position: fixed;    
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.4em;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #00bcd4;
+        }
+
+        /* قسم المهارات */
+        .skills {
+            text-align: center;
+            padding: 100px 20px;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .skills h2 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            font-family: 'Lora', serif;
+            font-weight: 700;
+        }
+
+        /* البطاقات للمهارات */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .skill-card {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .skill-card h3 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #00bcd4;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+            font-size: 1.4em;
+            color: #ddd;
+        }
+
+        .skill-card li {
+            margin-bottom: 10px;
+            padding-left: 35px;
+            position: relative;
+        }
+
+        /* تعديل مكان علامة الصح */
+        .skill-card li:before {
+            content: " ✔️   ";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00bcd4;
+            font-size: 1em;
+        }
+
+        /* قسم "حول" */
+        .about {
+            text-align: center;
+            color: white;
+            padding: 100px 20px;
+            margin-top: 60px;
+        }
+
+        .about h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .about p {
+            font-size: 1.5em;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        /* قسم التواصل */
+        .contact {
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px;
+        }
+
+        .contact h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .contact p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .contact a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.5em;
+            margin: 10px 15px;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .contact a:hover {
+            color: #00bcd4;
+        }
+
+        /* إضافة أيقونات للواتساب والبريد */
+        .contact i {
+            font-size: 2.5em;
+            margin-right: 15px;
+        }
+
+        /* التأثيرات التفاعلية */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.8em;
+            }
+            header p {
+                font-size: 1.4em;
+            }
+            .skills h2 {
+                font-size: 2.5em;
+            }
+            .about h2 {
+                font-size: 2.5em;
+            }
+            .contact h2 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- قائمة الأقسام -->
+    <nav>
+        <ul>
+            <li><a href="#about">𝒜𝒷𝑜𝓊𝓉</a></li>
+            <li><a href="#skills">𝒮𝒦𝒾𝓁𝓁𝓈</a></li>
+            <li><a href="#contact">𝒞𝓸𝓷𝓽𝓪𝓬𝓽</a></li>
+        </ul>
+    </nav>
+
+    <!-- فيديو الخلفية -->
+    <video autoplay muted loop class="video-background">
+        <source src="https://motionbgs.com/media/5351/binary-coding-programming.960x540.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- رأس الموقع -->
+    <header>
+        <h1>𝓜𝓪𝓱𝓶𝓸𝓾𝓭 𝓜𝓸𝒽𝒶𝓂𝑒𝒹</h1>
+        <p>𝓔𝓧𝓟𝓮𝓻𝓲𝓮𝓷𝓬𝓮𝓭 𝓕𝓾𝓁𝓁 𝓢𝓽𝓪𝓬𝓀 𝓦𝓮𝓫 𝓓𝓮𝓋𝑒𝓁𝓸𝓹𝑒𝓇, 𝓈𝓅𝑒𝒸𝒾𝒶𝓁𝒾𝓏𝑒𝒹 𝒾𝓃 𝒻𝓇𝓸𝓃𝓉𝑒𝓃𝒹 𝒶𝓃𝒹 𝒷𝒶𝒸𝓀𝑒𝓃𝒹 𝓭𝑒𝓋𝑒𝓁𝓸𝓹𝑒𝓂𝑒𝓃𝓉.</p>
+    </header>
+
+    <!-- قسم المهارات -->
+    <div class="skills" id="skills">
+        <h2>𝒮𝒦𝒾𝓁𝓁𝓈</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3>𝒻𝓇𝓸𝓃𝓉𝑒𝓃𝒹 𝒹𝑒𝓋𝑒𝓁𝑜𝓅𝑒𝓇</h3>
+                <ul>
+                    <li>𝓗𝓽𝓶𝓁</li>
+                    <li>𝓒𝓼𝓼</li>
+                    <li>𝒥𝒶𝓋𝒶𝒮𝒸𝓇𝒾𝓅𝓉</li>
+                    <li>𝔀𝓮𝓫 𝒹𝑒𝓋𝑒𝓁𝑜𝓅𝑒𝓇</li>
+                    <li>𝓳𝓼.𝓷𝓸𝓭𝓮</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>𝒷𝒶𝒸𝓀𝑒𝓃𝒹 𝒹𝑒𝓋𝑒𝓁𝑜𝓅𝑒𝓇</h3>
+                <ul>
+                    <li>𝓐𝓟𝓘 𝓓𝓮𝓿𝓮𝓵𝓸𝓹𝓶𝓮𝓷𝓽</li>
+                    <li>𝓲𝓬𝓭𝓵</li>
+                    <li>𝓑𝓸𝓸𝓽𝓼𝓽𝓻𝓪𝓹</li>
+                    <li>𝒫𝓎𝓉𝒽𝑜𝓃</li>
+                    <li>++𝓬</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم حول -->
+    <div class="about" id="about">
+        <h2>𝒜𝒷𝑜𝓊𝓉 𝓂𝑒</h2>
+        <p>I'm 𝓪 𝓯𝓾𝓁𝓁 𝓈𝓉𝒶𝒸𝓀 𝓌𝑒𝒷 𝒹𝑒𝓋𝑒𝓁𝑜𝓅𝑒𝓇 𝓁𝑜𝓋𝒾𝓃𝑔 𝒽𝓮𝓁𝓅𝒾𝓃𝑔 𝒷𝓊𝒾𝓁𝒹 𝒹𝒾𝑔𝒾𝓉𝒶𝓁 𝓅𝓇𝑜𝒿𝑒𝒸𝓉𝓈 𝒶𝓃𝒹 𝓒𝓊𝓈𝓉𝑜𝓂𝒾𝓏𝒾𝓃𝑔 𝓌𝑒𝒷𝓈𝒾𝓉𝑒𝓈 𝓌𝒾𝓉𝒽 𝓈𝓅𝑒𝒸𝒾𝒶𝓁 𝒻𝒾𝒶𝓉𝓊𝓇𝑒𝓈 𝒶𝓃𝒹 𝒻𝒾𝓍𝑒𝒹 𝒾𝓃𝒸𝓁𝓊𝒹𝒾𝓃𝑔 𝒷𝒶𝒸𝓀𝑒𝓃𝒹 𝑎𝓃𝒹 𝒻𝓇𝑜𝓃𝓉𝑒𝓃𝒹.</p>
+    </div>
+
+    <!-- قسم التواصل -->
+    <div class="contact" id="contact">
+        <h2>𝒞𝓸𝓷𝓉𝓪𝓬𝓽 𝓂𝑒</h2>
+        <p>Feel free to 𝓇𝑒𝒶𝒸𝒽 𝑜𝓊𝓉!</p>
+        <a href="mailto:mahmoud129968@gmail.com"><i class="fas fa-envelope"></i>Email: mahmoud129968@gmail.com</a>
+        <a href="https://wa.me/201205095447" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp: 012205095447</a>
+    </div>
+</body>
+</html>
